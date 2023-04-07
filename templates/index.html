@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <title>Password Generator</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Random Password Generator</h1>
+        <div class="inputs">
+            <div class="inputs-sub">
+                <div class="sub-heading">Enter the total no. of characters: </div>
+                <div><input id="pass-char" type="number"></div>
+            </div>
+            <div class="inputs-sub">
+                <div class="sub-heading">Enter the no. of special characters: </div>
+                <div><input id="pass-special" type="number"></div>
+            </div>
+            <div class="inputs-sub">
+                <div class="sub-heading">Enter the no. of numbers: </div>
+                <div><input id="pass-num" type="number"></div>
+            </div>
+            <div class="inputs-sub">
+                <div><button  py-click="generate()" type="submit">Generate</button> </div>
+            </div>
+            <div class="inputs-sub result">
+                <div class="sub-heading">Your Password is: </div>
+                <div><input id="pass-result" type="text"></div>
+            </div>
+        </div>
+        
+
+        <py-script>
+            import string
+            import random
+            characters = list(string.ascii_letters)
+            symbols = list(string.punctuation)
+            digits = list(string.digits)
+            r=[]
+            def listToString(s):
+                str1 = ""
+                for ele in s:
+                    str1 += ele
+                return str1
+            def generate():
+                c = int(Element('pass-char').element.value)
+                s = int(Element('pass-special').element.value)
+                n = int(Element('pass-num').element.value)
+                if(c>s+n):
+                    for i in range (0,s):
+                        r.append(random.choice(symbols))
+                    for i in range (0,n):
+                        r.append(random.choice(digits))
+                    for i in range (0,c-n-s):
+                        r.append(random.choice(characters))
+                    random.shuffle(r)
+                    res = listToString(r)
+                else:
+                    res="Invalid!"
+                result = Element("pass-result")
+                result.element.value = res
+        </py-script>
+    </div>
+</body>
+</html>

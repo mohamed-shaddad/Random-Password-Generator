@@ -1,0 +1,56 @@
+body{
+    background-color: #181823;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+    
+}
+.main{
+    display: grid;
+    grid-template-columns: 90%;
+    padding-top: 6vh;
+    justify-content: center;
+}
+
+.inputs{
+    display: grid;
+    row-gap: 2rem;
+}
+input{
+    height: 2rem;
+    border-radius: 7px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+}
+h1{
+    font-size: 4rem;
+}
+.sub-heading{
+    font-size: 1.5rem;
+}
+button{
+    height: 3rem;
+    border-radius: 7px;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    background-color: red;
+    width: 10.5rem;
+}
+.result{
+    width: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
